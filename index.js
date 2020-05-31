@@ -4,7 +4,6 @@ const bot = new Client();
 const GuildModel = require('./models/Guild');
 const {connect} = require('mongoose');
 var version = "1.0.1";
-//const token = 'NzEyNjAxODUzODIwNTM0ODM1.XsT8Qw.apNq3ue8XAqdeMSwUq3nCSTaOhI';
 
 const prefix = '^';
 
