@@ -25,6 +25,11 @@ bot.on('message', (msg)=>{
             msg.channel.send("General Kenobi");
             break;
 
+        case 'ChittyChittyBangBang':
+
+        msg.channel.send("You're broken!")
+        break;
+
         case 'info':
             if(args[1] === 'version')
             {
