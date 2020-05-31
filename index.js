@@ -20,6 +20,11 @@ bot.on('message', (msg)=>{
             msg.channel.send('pong!');
             break;
 
+        case 'HelloThere':
+
+            msg.channel.send("General Kenobi");
+            break;
+
         case 'info':
             if(args[1] === 'version')
             {
