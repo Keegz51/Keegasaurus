@@ -27,8 +27,14 @@ bot.on('message', (msg)=>{
 
         case 'ChittyChittyBangBang':
 
-        msg.channel.send("You're broken!")
-        break;
+            msg.channel.send("You're broken!")
+            break;
+
+        case 'tag':
+
+            const taggedUser = message.mentions.users.first();
+            message.channel.send("You tagged:" +taggedUser.username);
+            break;
 
         case 'info':
             if(args[1] === 'version')
