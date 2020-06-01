@@ -32,8 +32,8 @@ bot.on('message', (msg)=>{
 
         case 'tag':
 
-            const taggedUser = message.mentions.users.first();
-            message.channel.send("You tagged:" +taggedUser.username);
+            const taggedUser = msg.mentions.users.first();
+            msg.channel.send("You tagged:" +taggedUser.username);
             break;
 
         case 'info':
