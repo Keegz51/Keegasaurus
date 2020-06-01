@@ -36,6 +36,15 @@ bot.on('message', (msg)=>{
             msg.channel.send("You tagged:" +taggedUser.username);
             break;
 
+        case "You're":
+
+            if(args[1]==="breathtaking")
+            {
+                msg.channel.send(msg.author.username +" No, you're breathtaking!");
+            }
+
+            break;    
+
         case 'info':
             if(args[1] === 'version')
             {
