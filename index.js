@@ -7,6 +7,20 @@ var version = "1.0.1";
 
 const prefix = '^';
 
+const mysql= require("mysql");
+
+var connnection = mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"1234",
+    database:"kdb"
+});
+
+connect.connect(err=>{
+    if(err) throw err;
+    console.log("Connected to database");
+})
+
 bot.on('ready', ()=>{
          console.log('This bot is online!')
      });
