@@ -136,7 +136,7 @@ bot.on('message', (msg)=>{
                 embed.addField
                 (
                     //trace
-                    bot.users.cache.get(data.user),
+                    bot.users.cache.get(data.user).username,
                     `${data.user}`, 
                     `${data.points} points (level ${data.level})`
                     
