@@ -1,4 +1,4 @@
-const {Client} = require('discord.js');
+const {Client, Discord} = require('discord.js');
 const bot = new Client();
 
 const SQLite = require("better-sqlite3");
