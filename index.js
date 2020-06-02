@@ -135,6 +135,7 @@ bot.on('message', (msg)=>{
             {
                 embed.addField
                 (
+                    bot.users.fetch(data.user),
                     `${data.user}`, 
                     `${data.points} points (level ${data.level})`
                     
