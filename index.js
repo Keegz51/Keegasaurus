@@ -134,7 +134,8 @@ bot.on('message', (msg)=>{
             for(const data of top10) 
             {
                 embed.addField(
-                    bot.get(data.user).tag, 
+                    
+                    bot.users.fetch(data.user, true).tag, 
                     `${data.points} points (level ${data.level})`);
             }
 
