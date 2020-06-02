@@ -121,7 +121,7 @@ bot.on('message', (msg)=>{
         
         case 'leaderboard' :
 
-            const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(message.guild.id);
+            const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(msg.guild.id);
 
             // Now shake it and show it! (as a nice embed, too!)
             const embed = new Discord.RichEmbed()
@@ -137,7 +137,7 @@ bot.on('message', (msg)=>{
                     `${data.points} points (level ${data.level})`);
             }
 
-            return message.channel.send({embed});
+            return msg.channel.send({embed});
             break;
 
         case 'ping':
