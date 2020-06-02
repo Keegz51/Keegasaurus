@@ -182,7 +182,7 @@ bot.on('message', (msg)=>{
             break;
 
             case 'embed':
-                let member = msg.mentions.members.first() || msg.member, user = member.user;
+                let member = msg.mentions.members.first() || msg.member, user1 = member.user;
 
                 const embed = new Discord.MessageEmbed()
                 .setTitle('Trainer Information')
