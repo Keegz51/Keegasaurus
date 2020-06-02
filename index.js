@@ -1,5 +1,6 @@
-const {Client, Discord} = require('discord.js');
-const bot = new Client();
+//const {Client} = require('discord.js');
+const Discord = require('discord.js');
+const bot = new Discord.Client();
 
 const SQLite = require("better-sqlite3");
 const sql = new SQLite('./scores.sqlite');
@@ -124,7 +125,7 @@ bot.on('message', (msg)=>{
             const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(msg.guild.id);
 
             // Now shake it and show it! (as a nice embed, too!)
-            const embed = new Client.MessageEmbed()
+            const embed = new Discord.MessageEmbed()
                 .setTitle("Leaderboard")
                 .setAuthor(bot.user.username, bot.user.avatarURL)
                 .setDescription("Our top 10 points leaders!")
