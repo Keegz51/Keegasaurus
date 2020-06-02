@@ -133,11 +133,15 @@ bot.on('message', (msg)=>{
 
             for(const data of top10) 
             {
-                embed.addField(
+                embed.addField
+                (
                     
-                    bot.users.fetch(data.user.username, true).tag, 
-                    `${data.points} points (level ${data.level})`);
-            }
+                    bot.users.fetch(data.user.username, true).tag,
+                    `${data.user}`, 
+                    `${data.points} points (level ${data.level})`
+                    
+                )
+            ;}
 
             return msg.channel.send({embed});
             break;
