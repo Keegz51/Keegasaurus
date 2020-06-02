@@ -137,7 +137,6 @@ bot.on('message', (msg)=>{
                 (
                     //trace
                     bot.users.cache.get(data.user).username,
-                    `${data.user}`, 
                     `${data.points} points (level ${data.level})`
                     
                 )
