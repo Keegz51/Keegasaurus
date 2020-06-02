@@ -15,12 +15,12 @@ var connnection = mysql.createConnection({
     user:"root",
     password:"1234",
     database:"kdb"
-}); /* #endregion */
+}); 
 
 connect.connect(err=>{
     if(err) throw err;
     console.log("Connected to database");
-})
+}) /* #endregion */
 
 bot.on('ready', ()=>{
          console.log('This bot is online!')
