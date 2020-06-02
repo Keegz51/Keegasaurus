@@ -9,12 +9,13 @@ const prefix = '^';
 
 const mysql= require("mysql");
 
+/* #region db
 var connnection = mysql.createConnection({
     host:"localhost",
     user:"root",
     password:"1234",
     database:"kdb"
-});
+}); /* #endregion */
 
 connect.connect(err=>{
     if(err) throw err;
