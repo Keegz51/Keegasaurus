@@ -123,10 +123,8 @@ bot.on('message', (msg)=>{
 
             const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(msg.guild.id);
 
-            var dis  = new Discord.Client();
-
             // Now shake it and show it! (as a nice embed, too!)
-            const embed = new dis.MessageEmbed()
+            const embed = new Client.MessageEmbed()
                 .setTitle("Leaderboard")
                 .setAuthor(bot.user.username, bot.user.avatarURL)
                 .setDescription("Our top 10 points leaders!")
