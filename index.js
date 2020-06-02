@@ -184,10 +184,10 @@ bot.on('message', (msg)=>{
             case 'embed':
                 let member = msg.mentions.members.first() || msg.member, user1 = member.user;
 
-                const embed = new Discord.MessageEmbed()
+                const embed2 = new Discord.MessageEmbed()
                 .setTitle('Trainer Information')
                 .addField('Trainer Name', msg.author.username);
-                msg.channel.send(embed);
+                msg.channel.send(embed2);
                 break;
 
             case 'send':
