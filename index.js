@@ -41,8 +41,8 @@ bot.on('ready', ()=>{
         }
 
     // And then we have two prepared statements to get and set the score data.
-    client.getScore = sql.prepare("SELECT * FROM scores WHERE user = ? AND guild = ?");
-    client.setScore = sql.prepare("INSERT OR REPLACE INTO scores (id, user, guild, points, level) VALUES (@id, @user, @guild, @points, @level);");
+    bot.getScore = sql.prepare("SELECT * FROM scores WHERE user = ? AND guild = ?");
+    bot.setScore = sql.prepare("INSERT OR REPLACE INTO scores (id, user, guild, points, level) VALUES (@id, @user, @guild, @points, @level);");
 
      });
 
@@ -53,7 +53,7 @@ bot.on('message', (msg)=>{
     let score;
     if (msg.guild) 
     {
-        score = client.getScore.get(msg.author.id, msg.guild.id);
+        score = bot.getScore.get(msg.author.id, msg.guild.id);
         if (!score) 
         {
 
@@ -75,7 +75,7 @@ bot.on('message', (msg)=>{
         msg.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
         }
 
-        client.setScore.run(score);
+        bot.setScore.run(score);
     }
 
     switch(args[0])
@@ -91,14 +91,14 @@ bot.on('message', (msg)=>{
              // Limited to guild owner - adjust to your own preference!
             if(!msg.author.id === msg.guild.owner) return msg.reply("You're not the boss of me, you can't do that!");
 
-            const user = msg.mentions.users.first() || client.users.get(args[0]);
+            const user = msg.mentions.users.first() || bot.users.get(args[0]);
             if(!user) return msg.reply("You must mention someone or give their ID!");
 
             const pointsToAdd = parseInt(args[1], 10);
             if(!pointsToAdd) return msg.reply("You didn't tell me how many points to give...")
 
             // Get their current points.
-            let userscore = client.getScore.get(user.id, msg.guild.id);
+            let userscore = bot.getScore.get(user.id, msg.guild.id);
             // It's possible to give points to a user we haven't seen, so we need to initiate defaults here too!
             if (!userscore) {
                 userscore = { 
@@ -114,7 +114,7 @@ bot.on('message', (msg)=>{
             userscore.level = userLevel;
 
             // And we save it!
-            client.setScore.run(userscore);
+            bot.setScore.run(userscore);
 
             return msg.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
             break;
@@ -126,14 +126,14 @@ bot.on('message', (msg)=>{
             // Now shake it and show it! (as a nice embed, too!)
             const embed = new Discord.RichEmbed()
                 .setTitle("Leaderboard")
-                .setAuthor(client.user.username, client.user.avatarURL)
+                .setAuthor(bot.user.username, bot.user.avatarURL)
                 .setDescription("Our top 10 points leaders!")
                 .setColor(0x00AE86);
 
             for(const data of top10) 
             {
                 embed.addField(
-                    client.users.get(data.user).tag, 
+                    bot.users.get(data.user).tag, 
                     `${data.points} points (level ${data.level})`);
             }
 
