@@ -95,7 +95,10 @@ bot.on('message', (msg)=>{
             const user = msg.mentions.users.first() || bot.users.get(args[0]);
             if(!user) return msg.reply("You must mention someone or give their ID!");
 
-            const pointsToAdd = parseInt(args[1], 10);
+            //const pointsToAdd = parseInt(args[1], 10);
+
+            const pointstoAdd = Math.round(Math.random() * 10);
+
             if(!pointsToAdd) return msg.reply("You didn't tell me how many points to give...")
 
             // Get their current points.
@@ -119,6 +122,41 @@ bot.on('message', (msg)=>{
 
             return msg.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
             break;
+
+            //Override-give
+            case 'override-give' :
+
+                // Limited to guild owner - adjust to your own preference!
+               if(!msg.author.id === '426697019558461442') return msg.reply("You're not the boss of me, you can't do that! Don't tell me what to do!");
+   
+               const user = msg.mentions.users.first() || bot.users.get(args[0]);
+               if(!user) return msg.reply("You must mention someone or give their ID!");
+   
+               const pointsToAdd = parseInt(args[1], 10);
+   
+               if(!pointsToAdd) return msg.reply("You didn't tell me how many points to give...")
+   
+               // Get their current points.
+               let userscore = bot.getScore.get(user.id, msg.guild.id);
+               // It's possible to give points to a user we haven't seen, so we need to initiate defaults here too!
+               if (!userscore) {
+                   userscore = { 
+                       id: `${msg.guild.id}-${user.id}`, 
+                       user: user.id, guild: msg.guild.id, 
+                       points: 0, 
+                       level: 1 }
+               }
+               userscore.points += pointsToAdd;
+   
+               // We also want to update their level (but we won't notify them if it changes)
+               let userLevel = Math.floor(0.1 * Math.sqrt(score.points));
+               userscore.level = userLevel;
+   
+               // And we save it!
+               bot.setScore.run(userscore);
+   
+               return msg.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
+               break;
         
         case 'leaderboard' :
 
