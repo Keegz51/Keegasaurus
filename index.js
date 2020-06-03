@@ -97,9 +97,9 @@ bot.on('message', (msg)=>{
 
             //const pointsToAdd = parseInt(args[1], 10);
 
-            const pointsToAdd = parseInt(Math.round(Math.random() * 10));
+            const pointsToAdd = parseInt(Math.ceil(Math.random() * 10));
 
-            if(!pointsToAdd) return msg.reply("You didn't tell me how many points to give...")
+            if(!pointsToAdd) return msg.reply("Wow, you've given 0 demerits. The chances of that happening are 1 in 1.09^59")
 
             // Get their current points.
             let userscore = bot.getScore.get(user.id, msg.guild.id);
