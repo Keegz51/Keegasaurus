@@ -104,19 +104,21 @@ bot.on('message', (msg)=>{
             // Get their current points.
             let userscore = bot.getScore.get(user.id, msg.guild.id);
             // It's possible to give points to a user we haven't seen, so we need to initiate defaults here too!
+            let userLevel =0;
             if (!userscore) {
                 userscore = { 
                     id: `${msg.guild.id}-${user.id}`, 
                     user: user.id, guild: msg.guild.id, 
                     points: 0, 
                     level: 1 }
+                userLevel=level;
             }
             userscore.points += pointsToAdd;
 
             // We also want to update their level (but we won't notify them if it changes)
-            let userLevel = Math.floor(0.1 * Math.sqrt(score.points));
+            userLevel = Math.floor(0.1 * Math.sqrt(score.points));
             userscore.level = userLevel;
-
+            
             // And we save it!
             bot.setScore.run(userscore);
 
