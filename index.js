@@ -123,7 +123,7 @@ bot.on('message', (msg)=>{
             return msg.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
             break;
 
-            //Override-give
+            //Override-give - 3
             case 'override-give' :
 
                 // Limited to guild owner - adjust to your own preference!
@@ -132,30 +132,30 @@ bot.on('message', (msg)=>{
                const user3 = msg.mentions.users.first() || bot.users.get(args[0]);
                if(!user3) return msg.reply("You must mention someone or give their ID!");
    
-               const pointsToAdd = parseInt(args[1], 10);
+               const pointsToAdd3 = parseInt(args[1], 10);
    
-               if(!pointsToAdd) return msg.reply("You didn't tell me how many points to give...")
+               if(!pointsToAdd3) return msg.reply("You didn't tell me how many points to give...")
    
                // Get their current points.
-               let userscore = bot.getScore.get(user3.id, msg.guild.id);
+               let userscore3 = bot.getScore.get(user3.id, msg.guild.id);
                // It's possible to give points to a user we haven't seen, so we need to initiate defaults here too!
-               if (!userscore) {
-                   userscore = { 
+               if (!userscore3) {
+                   userscore3 = { 
                        id: `${msg.guild.id}-${user3.id}`, 
                        user: user3.id, guild: msg.guild.id, 
                        points: 0, 
                        level: 1 }
                }
-               userscore.points += pointsToAdd;
+               userscore3.points += pointsToAdd3;
    
                // We also want to update their level (but we won't notify them if it changes)
-               let userLevel = Math.floor(0.1 * Math.sqrt(score.points));
-               userscore.level = userLevel;
+               let userLevel3 = Math.floor(0.1 * Math.sqrt(score.points));
+               userscore3.level = userLevel3;
    
                // And we save it!
-               bot.setScore.run(userscore);
+               bot.setScore.run(userscore3);
    
-               return msg.channel.send(`${user3.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
+               return msg.channel.send(`${user3.tag} has received ${pointsToAdd3} points and now stands at ${userscore3.points} points.`);
                break;
         
         case 'leaderboard' :
