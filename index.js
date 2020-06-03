@@ -111,14 +111,14 @@ bot.on('message', (msg)=>{
                     user: user.id, guild: msg.guild.id, 
                     points: 0, 
                     level: 1 }
-                userLevel=level;
+                userLevel=userscore.level;
             }
             userscore.points += pointsToAdd;
 
             // We also want to update their level (but we won't notify them if it changes)
             userLevel = Math.floor(0.1 * Math.sqrt(score.points));
             userscore.level = userLevel;
-            
+
             // And we save it!
             bot.setScore.run(userscore);
 
