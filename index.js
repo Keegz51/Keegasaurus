@@ -129,20 +129,20 @@ bot.on('message', (msg)=>{
                 // Limited to guild owner - adjust to your own preference!
                if(!msg.author.id === '426697019558461442') return msg.reply("You're not the boss of me, you can't do that! Don't tell me what to do!");
    
-               const user = msg.mentions.users.first() || bot.users.get(args[0]);
-               if(!user) return msg.reply("You must mention someone or give their ID!");
+               const user3 = msg.mentions.users.first() || bot.users.get(args[0]);
+               if(!user3) return msg.reply("You must mention someone or give their ID!");
    
                const pointsToAdd = parseInt(args[1], 10);
    
                if(!pointsToAdd) return msg.reply("You didn't tell me how many points to give...")
    
                // Get their current points.
-               let userscore = bot.getScore.get(user.id, msg.guild.id);
+               let userscore = bot.getScore.get(user3.id, msg.guild.id);
                // It's possible to give points to a user we haven't seen, so we need to initiate defaults here too!
                if (!userscore) {
                    userscore = { 
-                       id: `${msg.guild.id}-${user.id}`, 
-                       user: user.id, guild: msg.guild.id, 
+                       id: `${msg.guild.id}-${user3.id}`, 
+                       user: user3.id, guild: msg.guild.id, 
                        points: 0, 
                        level: 1 }
                }
@@ -155,7 +155,7 @@ bot.on('message', (msg)=>{
                // And we save it!
                bot.setScore.run(userscore);
    
-               return msg.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
+               return msg.channel.send(`${user3.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
                break;
         
         case 'leaderboard' :
