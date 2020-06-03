@@ -97,7 +97,7 @@ bot.on('message', (msg)=>{
 
             //const pointsToAdd = parseInt(args[1], 10);
 
-            const pointstoAdd = Math.round(Math.random() * 10);
+            const pointsToAdd = parseInt(Math.round(Math.random() * 10));
 
             if(!pointsToAdd) return msg.reply("You didn't tell me how many points to give...")
 
