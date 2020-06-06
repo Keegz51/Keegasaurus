@@ -25,6 +25,7 @@ bot.on('ready', ()=>{
             sql.prepare("CREATE UNIQUE INDEX idx_scores_id ON scores (id);").run();
             sql.pragma("synchronous = 1");
             sql.pragma("journal_mode = wal");
+            Console.log("Table created");
         }
 
     // And then we have two prepared statements to get and set the score data.
