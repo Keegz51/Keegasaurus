@@ -248,5 +248,5 @@ bot.on('message', (msg)=>{
 
     }
 });
-bot.login(process.env.token);
-
+//bot.login(process.env.token);
+bot.login("NzEyNjAxODUzODIwNTM0ODM1.XtOlKw.j74o531rXup5q9vjBQeCAIcceek");
